@@ -33,4 +33,12 @@ class Vendors extends Model
         return $this->belongsTo('App\Models\MainCategories','category_id','id');
     }
 
+    public function brands(){
+        return $this->hasMany(Brands::class)->where("translation_lang",getdefultlang());
+    }
+
+    public function stores(){
+        return $this->hasMany(Store::class);
+    }
+
 }

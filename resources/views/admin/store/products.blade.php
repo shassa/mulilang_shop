@@ -5,13 +5,13 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title"> الاقسام الرئيسية </h3>
+                    <h3 class="content-header-title"> المخازن </h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية</a>
                                 </li>
-                                <li class="breadcrumb-item active"> الاقسام
+                                <li class="breadcrumb-item active"> المخازن
                                 </li>
                             </ol>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع الاقسام الرئيسية </h4>
+                                    <h4 class="card-title">جميع مخازن الموقع </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,35 +44,34 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         <table
-                                            class="table display nowrap table-striped table-bordered scroll-horizontal">
+                                            class="table display nowrap table-striped table-bordered ">
                                             <thead>
                                             <tr>
-                                                <th> الاسم</th>
-                                                <th>الصورة</th>
-                                                <th>التاجر</th>
+                                                <th> المنتج</th>
+                                                <th>الكميه</th>
                                                 <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($brands)
-                                                @foreach($brands as $brand)
+                                            @isset($products)
+                                                @foreach($products as $product)
                                                     <tr>
-                                                        <td>{{$brand -> name}}</td>
-                                                        <td><img src="{{$brand ->photo}}" style="width: 100px;"></td>
-                                                        <td>{{$brand ->vendor->name}}</td>
+                                                        <td>{{$product->name}}</td>
+                                                        <td>{{$product->pivot->quantity}}</td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{route('brands.edit',$brand->id)}}"
+                                                                <a href="{{route('products.edit',$product->id)}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
 
 
-                                                                   <form method="post" action="{{route('brands.destroy',$brand->id)}}">
+                                                                   <form method="post" action="{{route('products.destroy',$product->id)}}">
                                                                     @csrf
                                                                     @method('delete')
                                                                     <input type="submit" value="حذف" class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">
                                                                      </form>
+
                                                             </div>
                                                         </td>
                                                     </tr>

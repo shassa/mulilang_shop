@@ -2,16 +2,15 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Brands;
+use App\Models\MainCategories;
 use Faker\Generator as Faker;
 
-$factory->define(Brands::class, function (Faker $faker) {
+$factory->define(MainCategories::class, function (Faker $faker) {
     return [
         'name' => $this->faker->name(),
-        'photo'=>'http://lorempixel.com/400/200/sports/',
-        'vendor_id'=>$this->faker->numberBetween(1,10),
+        'slug' => $this->faker->name(),
+        'photo'=>'http://lorempixel.com/200/400/technics/',
         'translation_lang'=>'ar',
         'translation_of'=>0
-
     ];
 });

@@ -16,12 +16,12 @@ class CreateVendorsTable extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('category_id');
+            $table->foreignId('category_id')->constrained('main_categories')->onDelete('cascade');
             $table->tinyInteger('active');
-            $table->string('mobile');
-            $table->string('address');
+            $table->string('mobile')->unique();
+            $table->string('address')->unique();
             $table->text('logo');
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
         });

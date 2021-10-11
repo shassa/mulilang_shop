@@ -82,6 +82,17 @@ Route::group(['prefix' => 'vendors'], function () {
 
 Route::resource('brands', 'BrandsController');
 ####################### Brands End ######################################
+######################## Products begin ###################################
+
+Route::resource('products', 'ProductController');
+Route::post('/product/{product}/stores','ProductController@updateStore')->name('products.store.update');
+####################### Products End ######################################
+
+######################## Stores begin ###################################
+
+Route::resource('stores', 'StoreController');
+Route::get('/store/{store}/products','StoreController@products')->name('stores.products');
+####################### Stores End ######################################
 Route::group(["namespace" => "admin", 'middleware' => 'guest'], function () {
     Route::get('/login', 'loginController@index');
     Route::post('/login', 'loginController@getlogin')->name('admin.login');

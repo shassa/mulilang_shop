@@ -49,26 +49,29 @@
                                             <tr>
                                                 <th> الاسم</th>
                                                 <th>الصورة</th>
-                                                <th>التاجر</th>
+                                                <th>السعر</th>
+                                                <th>الماركة</th>
                                                 <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($brands)
-                                                @foreach($brands as $brand)
+                                            @isset($products)
+                                                @foreach($products as $product)
                                                     <tr>
-                                                        <td>{{$brand -> name}}</td>
-                                                        <td><img src="{{$brand ->photo}}" style="width: 100px;"></td>
-                                                        <td>{{$brand ->vendor->name}}</td>
+                                                        <td>{{$product -> name}}</td>
+                                                        <td><img src="{{$product ->photo}}" style="width: 100px;"></td>
+                                                        <td>{{$product ->price}}</td>
+                                                        <td>{{$product ->brand->name}}</td>
+
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{route('brands.edit',$brand->id)}}"
+                                                                <a href="{{route('products.edit',$product->id)}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
 
 
-                                                                   <form method="post" action="{{route('brands.destroy',$brand->id)}}">
+                                                                   <form method="post" action="{{route('products.destroy',$product->id)}}">
                                                                     @csrf
                                                                     @method('delete')
                                                                     <input type="submit" value="حذف" class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">
