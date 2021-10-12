@@ -87,6 +87,9 @@ Route::resource('brands', 'BrandsController');
 Route::resource('products', 'ProductController');
 Route::post('/product/{product}/stores','ProductController@updateStore')->name('products.store.update');
 ####################### Products End ######################################
+########################## Orders begin ##############################
+Route::resource('orders','OrdersController');
+Route::get('/store/{order}/products','OrdersController@products')->name('order.products');
 
 ######################## Stores begin ###################################
 

@@ -105,13 +105,28 @@
                 <span class="menu-title" data-i18n="nav.dash.main">المخازن  </span>
                 <span
                     class="badge badge badge-warning  badge-pill float-right mr-2">{{App\Models\Store::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a class="menu-item" href="{{route('stores.index')}}"
+                                        data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('stores.create')}}" data-i18n="nav.dash.crypto">أضافة
+                            مخزن </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                <span class="menu-title" data-i18n="nav.dash.main">الطلبات  </span>
+                <span
+                    class="badge badge badge-warning  badge-pill float-right mr-2">{{App\Orders::count()}}</span>
             </a>
             <ul class="menu-content">
-                <li><a class="menu-item" href="{{route('stores.index')}}"
+                <li><a class="menu-item" href="{{route('orders.index')}}"
                                       data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                 </li>
-                <li><a class="menu-item" href="{{route('stores.create')}}" data-i18n="nav.dash.crypto">أضافة
-                        مخزن </a>
+                <li><a class="menu-item" href="{{route('orders.create')}}" data-i18n="nav.dash.crypto">أضافة
+                        منتج </a>
                 </li>
             </ul>
         </li>

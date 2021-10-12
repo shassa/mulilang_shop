@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Orders;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -23,6 +24,11 @@ class Product extends Model
     public function stores()
     {
         return $this->belongsToMany(Store::class,'store_products')->withPivot('quantity');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Orders::class,'order_products','order_id','product_id')->withPivot('quantity');
     }
 
 }

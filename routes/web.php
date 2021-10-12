@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.site');
 });
-
-Auth::routes();
-
+Route::get('/site',[SiteController::class,'sitepage']);
+// Auth::routes();
+Route::get('/setlag/{lang}',[SiteController::class,'defultLang'])->name('defultLang');
 Route::get('/home', 'HomeController@index')->name('home');

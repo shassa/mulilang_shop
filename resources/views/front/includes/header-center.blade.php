@@ -2,9 +2,7 @@
     <div class="container">
         <div class="row d-flex align-items-center">
             <div id="_desktop_logo" class="contentsticky_logo d-flex align-items-center justify-content-start col-lg-3 col-md-3">
-                <a href="http://demo.bestprestashoptheme.com/savemart/">
-                    <img class="logo img-fluid" src="{{asset('public/site_images/logo-1.png')}}" alt="Prestashop_Savemart">
-                </a>
+                   <span style="font-size: 45px;color:purple;font-family:cursive;"> Sopda</span>
             </div>
             <div class="col-lg-9 col-md-9 header-menu d-flex align-items-center justify-content-end">
                 <div class="data-contact d-flex align-items-center">
