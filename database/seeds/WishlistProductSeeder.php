@@ -1,9 +1,9 @@
 <?php
 
-use App\Wishlist;
+use App\ProductsWishlist;
 use Illuminate\Database\Seeder;
 
-class WishlistSeeder extends Seeder
+class WishlistProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class WishlistSeeder extends Seeder
      */
     public function run()
     {
-        factory(Wishlist::class,10)->create();
+        factory(ProductsWishlist::class,10)->create();
     }
 }

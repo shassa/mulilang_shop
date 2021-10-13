@@ -14,11 +14,18 @@
                             <div id="verticalmenu" class="verticalmenu" role="navigation">
                                 <?php
                                    use App\Models\MainCategories;
-                                   $categories=MainCategories::where("translation_lang",getdefultlang())with('subCategoeies')->get()?>
+                                   $categories=MainCategories::where("translation_lang",getdefultlang())->with('subCategoeies')->get()?>
                                 <ul class="menu level1">
                                     @foreach ($categories as $category)
                                    <li class="item  parent" >
-                                       {{$category->name}}
+                                    {{$category->name}}
+
+                                    <span class="show-sub fa-active-sub"></span><div class="dropdown-menu" >
+                                       @if($category->subCategoeies->count()>0)
+                                       <ul>
+                                        <li class="item ">{{$category->subCategoeies[0]->name}} </li>
+                                       </ul>
+                                       @endif
                                     </li>
                                     @endforeach
                                 </ul>

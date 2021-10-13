@@ -30,29 +30,32 @@
                 var psr_icon_color = "#F19D76";
                 var search_url = "http:\/\/demo.bestprestashoptheme.com\/savemart\/en\/search";
             </script>
-        
+
             <script type="text/javascript">
             var baseDir = "/savemart/";
             var static_token = "28add935523ef131c8432825597b9928";
             </script>
-            
+
     </head>
-  
-    <body id="index" class="lang-en country-gb currency-gbp layout-full-width page-index tax-display-enabled" data-new-gr-c-s-check-loaded="14.1024.0" data-gr-ext-installed="">    
-    <main id="main-site" class="displayhomenovone">  
+
+    <body id="index" class="lang-en country-gb currency-gbp layout-full-width page-index tax-display-enabled" data-new-gr-c-s-check-loaded="14.1024.0" data-gr-ext-installed="">
+    <main id="main-site" class="displayhomenovone">
         <header id="header" class="header-1 sticky-menu" style="height: 263px;">
                 @include('front.includes.header-top')
                 @include('front.includes.header-mobile')
                 @include('front.includes.header-center')
                 @include('front.includes.header-bottom')
-        </header>       
+        </header>
+        <br><br>
+        <div style="padding-left: 10%">
             @yield('content')
-        <footer>        
+        </div>
+        <footer>
             @include('front.includes.footer')
 
         </footer>
-    
-        <script type="text/javascript" src="{{asset('public/js/bottom-3c96ed23.js')}}"></script>    
+
+        <script type="text/javascript" src="{{asset('public/js/bottom-3c96ed23.js')}}"></script>
         <div class="betternet-wrapper"></div>
     </body>
   <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>

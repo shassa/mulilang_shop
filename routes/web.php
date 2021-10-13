@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('layouts.site');
 });
 Route::get('/site',[SiteController::class,'sitepage']);
-// Auth::routes();
+Auth::routes();
 Route::get('/setlag/{lang}',[SiteController::class,'defultLang'])->name('defultLang');
 Route::get('/home', 'HomeController@index')->name('home');

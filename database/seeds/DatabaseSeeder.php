@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Store;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +20,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(StoreSeeder::class);
           //  $this->call(StoreProductsSeeder::class);
             // $this->call(OrdersSeeder::class);
-         $this->call(OrdersProductsSeeder::class);
+        //  $this->call(OrdersProductsSeeder::class);
+        //  $this->call(WishlistSeeder::class);
+        $this->call(WishlistProductSeeder::class);
+
 
     }
 }
