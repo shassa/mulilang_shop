@@ -9,7 +9,7 @@ class Brands extends Model
     protected $fillable=['vendor_id','translation_lang','name','translation_of','photo'];
 
     public function getPhotoAttribute($val){
-        return $val!=null ? asset('storage/app/public/'.$val):" ";
+        return $val!=null ? asset('../storage/app/public/'.$val):" ";
     }
 
     public function vendor(){
@@ -17,7 +17,7 @@ class Brands extends Model
     }
 
     public function products(){
-        return $this->hasMany(Product::class)->where("translation_lang",getdefultlang());
+        return $this->hasMany(Product::class,'brand_id')->where("translation_lang",getdefultlang());
     }
 
     public function brands(){

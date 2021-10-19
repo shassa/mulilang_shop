@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.site');
-});
-Route::get('/site',[SiteController::class,'sitepage']);
-Auth::routes();
-Route::get('/setlag/{lang}',[SiteController::class,'defultLang'])->name('defultLang');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/',[SiteController::class,'sitepage'])->name('site');
+Auth::routes(['verify' => true]);
+Route::get('/setlag/{lang}',[SiteController::class,'setlang'])->name('defultLang');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+//gooogle login
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+Route::get('/cart',[SiteController::class,'cart'])->name('cart');

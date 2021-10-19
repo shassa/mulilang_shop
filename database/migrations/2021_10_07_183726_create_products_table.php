@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('photo');
             $table->string("translation_of");
             $table->integer('price');
+            $table->integer('is_slider')->default(0);
             $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('cascade');
             $table->string('sq_code');
             $table->timestamps();

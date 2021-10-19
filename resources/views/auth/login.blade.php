@@ -5,9 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">Log In</div>
 
                 <div class="card-body">
+                    <br>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -62,6 +63,12 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+                                <a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
+                                  <strong>Login With Google</strong>
+                                </a>
+                                <br>
+
                             </div>
                         </div>
                     </form>

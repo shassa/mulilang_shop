@@ -8,7 +8,7 @@
                     <div class="card-header border-0">
                         <div class="card-title text-center">
                             <div class="p-1">
-                                <img src="{{asset('public/assets/admin/images/logo/logo.png')}}" alt="LOGO"/>
+                                <img src="{{asset('assets/admin/images/logo/logo.png')}}" alt="LOGO"/>
 
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </fieldset>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <div class="col-md-6 col-12 text-center text-md-left">
                                         <fieldset>
                                             <input type="checkbox" name="remember_me" id="remember-me"
@@ -53,7 +53,7 @@
                                             <label for="remember-me">تذكر دخولي</label>
                                         </fieldset>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i>
                                     دخول
                                 </button>

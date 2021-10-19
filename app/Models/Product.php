@@ -10,7 +10,7 @@ class Product extends Model
 
     protected $fillable=['price','name','photo','brand_id','translation_lang'];
     public function getPhotoAttribute($val){
-        return $val!=null ? asset('storage/app/public/'.$val):" ";
+        return $val!=null ? asset('../storage/app/public/'.$val):" ";
     }
 
     public function products(){

@@ -54,7 +54,9 @@
                                                 CATEGORIES
                                             </button>
                                             <ul class="dropdown-menu list-unstyled">
-                                                <li class="dropdown-item active" data-value="0"><span>All Categories</span></li>
+                                                @foreach ($categories as $category )
+                                                <li class="dropdown-item active" data-value="0"><span>{{$category->name}}</span></li>
+                                                @endforeach
 
                                             </ul>
                                         </div>

@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a class="navbar-brand" href="index.html">
                         <img class="brand-logo" alt="modern admin logo"
-                             src="{{asset('public/assets/admin/images/logo/logo.png')}}">
+                             src="{{asset('assets/admin/images/logo/logo.png')}}">
                         <h3 class="brand-text">Modern Admin</h3>
                     </a>
                 </li>
@@ -35,7 +35,7 @@
                       class="user-name text-bold-700">{{Auth::guard('admin')->user()->name}}</span>
                 </span>
                             <span class="avatar avatar-online">
-                  <img  style="height: 35px;" src="{{asset('public/assets/admin/images/portrait/small/avatar-s-19.png')}}" alt="avatar"><i></i></span>
+                  <img  style="height: 35px;" src="{{asset('assets/admin/images/portrait/small/avatar-s-19.png')}}" alt="avatar"><i></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('admin.profile')}}"><i
                                     class="ft-user"></i> تعديل الملف الشحصي </a>
@@ -157,8 +157,8 @@
                                     <div class="media">
                                         <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{asset('public/assets/admin/images/portrait/small/avatar-s-19.png')}}"
-                               alt="avatar"><i></i></span>
+                          <img src="{{asset('assets/admin/images/portrait/small/avatar-s-19.png')}}"
+                               ><i></i></span>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Margaret Govan</h6>
@@ -176,7 +176,7 @@
                                     <div class="media">
                                         <div class="media-left">
                         <span class="avatar avatar-sm avatar-busy rounded-circle">
-                          <img src="{{asset('public/assets/admin/images/portrait/small/avatar-s-2.png')}}" alt="avatar"><i></i></span>
+                          <img src="{{asset('assets/admin/images/portrait/small/avatar-s-2.png')}}" ><i></i></span>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Bret Lezama</h6>
@@ -194,7 +194,7 @@
                                     <div class="media">
                                         <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{asset('public/assets/admin/images/portrait/small/avatar-s-3.png')}}" alt="avatar"><i></i></span>
+                          <img src="{{asset('assets/admin/images/portrait/small/avatar-s-3.png')}}" alt="avatar"><i></i></span>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Carie Berra</h6>
@@ -212,7 +212,7 @@
                                     <div class="media">
                                         <div class="media-left">
                         <span class="avatar avatar-sm avatar-away rounded-circle">
-                          <img src="{{asset('public/assets/admin/images/portrait/small/avatar-s-6.png')}}" alt="avatar"><i></i></span>
+                          <img src="{{asset('assets/admin/images/portrait/small/avatar-s-6.png')}}" alt="avatar"><i></i></span>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Eric Alsobrook</h6>

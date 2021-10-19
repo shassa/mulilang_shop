@@ -11,9 +11,9 @@
         {{-- css links --}}
             <link rel="icon" type="image/vnd.microsoft.icon" href="http://demo.bestprestashoptheme.com/savemart/img/favicon.ico?1531456858">
             <link rel="shortcut icon" type="image/x-icon" href="http://demo.bestprestashoptheme.com/savemart/img/favicon.ico?1531456858">
-            <link href="{{asset('public/css/site/css.css')}}" rel="stylesheet">
-            <link href="{{asset('public/css/site/css(1).css')}}" rel="stylesheet">
-            <link rel="stylesheet" href="{{asset('public/css/site/theme-77e2b824.css')}}" type="text/css" media="all">
+            <link href="{{asset('css/site/css.css')}}" rel="stylesheet">
+            <link href="{{asset('css/site/css(1).css')}}" rel="stylesheet">
+            <link rel="stylesheet" href="{{asset('css/site/theme-77e2b824.css')}}" type="text/css" media="all">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
             <style type="text/css">
@@ -41,7 +41,9 @@
     <body id="index" class="lang-en country-gb currency-gbp layout-full-width page-index tax-display-enabled" data-new-gr-c-s-check-loaded="14.1024.0" data-gr-ext-installed="">
     <main id="main-site" class="displayhomenovone">
         <header id="header" class="header-1 sticky-menu" style="height: 263px;">
+
                 @include('front.includes.header-top')
+
                 @include('front.includes.header-mobile')
                 @include('front.includes.header-center')
                 @include('front.includes.header-bottom')
@@ -55,7 +57,7 @@
 
         </footer>
 
-        <script type="text/javascript" src="{{asset('public/js/bottom-3c96ed23.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/bottom-3c96ed23.js')}}"></script>
         <div class="betternet-wrapper"></div>
     </body>
   <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>

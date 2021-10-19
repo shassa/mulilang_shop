@@ -18,7 +18,7 @@ class SubCategories extends Model
      }
 
      public function getPhotoAttribute($val){
-         return $val!=null ? asset('storage/app/public/'.$val):" ";
+         return $val!=null ? asset('../storage/app/public/'.$val):" ";
      }
 
      public function subCategories(){//translation

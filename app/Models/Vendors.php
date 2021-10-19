@@ -22,7 +22,7 @@ class Vendors extends Model
     }
 
     public function getLogoAttribute($val){
-        return $val!=null ? asset('storage/app/public/'.$val):" ";
+        return $val!=null ? asset('../storage/app/public/'.$val):" ";
     }
 
     public function setPasswordAttribute($password){
