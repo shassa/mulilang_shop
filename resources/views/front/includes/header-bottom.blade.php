@@ -18,12 +18,14 @@
                                 <ul class="menu level1">
                                     @foreach ($categories as $category)
                                    <li class="item  parent" >
-                                    {{$category->name}}
+                                    <a href="{{route('category',$category)}}">{{$category->name}}</a>
 
                                     <span class="show-sub fa-active-sub"></span><div class="dropdown-menu" >
                                        @if($category->subCategoeies->count()>0)
                                        <ul>
-                                        <li class="item ">{{$category->subCategoeies[0]->name}} </li>
+                                           @foreach ($category->subCategoeies as $subcategory)
+                                             <li class="item"><a href="{{route('category',$subcategory)}}">{{$subcategory->name}}</a></li>
+                                           @endforeach
                                        </ul>
                                        @endif
                                     </li>

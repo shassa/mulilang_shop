@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[SiteController::class,'sitepage'])->name('site');
 Auth::routes(['verify' => true]);
 Route::get('/setlag/{lang}',[SiteController::class,'setlang'])->name('defultLang');
+Route::get('/category/{category}',[SiteController::class,'categorypage'])->name('category');
+
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 //gooogle login

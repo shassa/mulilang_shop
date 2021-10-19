@@ -28,5 +28,8 @@ class SubCategories extends Model
      public function maincategory(){
          return $this->belongsTo(MainCategories::class,'category_id','id');
      }
+     public function brands(){
+        return $this->hasMany(Brands::class,'subcategory_id');
+    }
 
 }

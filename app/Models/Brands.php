@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brands extends Model
 {
-    protected $fillable=['vendor_id','translation_lang','name','translation_of','photo'];
+    protected $fillable=['vendor_id','translation_lang','name','translation_of','photo','subcategory_id'];
 
     public function getPhotoAttribute($val){
         return $val!=null ? asset('../storage/app/public/'.$val):" ";
@@ -22,5 +22,9 @@ class Brands extends Model
 
     public function brands(){
         return $this->hasMany(self::class,'translation_of');
+    }
+
+    public function subCategory(){
+        return $this->belongsTo(SubCategories::class);
     }
 }

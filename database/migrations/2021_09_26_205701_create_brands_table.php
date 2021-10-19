@@ -19,6 +19,7 @@ class CreateBrandsTable extends Migration
             $table->text('photo')->unique();
             $table->string('translation_lang');
             $table->string("translation_of");
+            $table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->onDelete('cascade');
             $table->foreignId('vendor_id')->nullable()->constrained('vendors')->onDelete('cascade');
             $table->timestamps();
         });

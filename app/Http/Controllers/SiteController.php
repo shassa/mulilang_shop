@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Brands;
 use App\Models\Language;
+use App\Models\MainCategories;
 use App\Models\Product;
+use App\Models\SubCategories;
 use Illuminate\Support\Facades\Config;
 
 class SiteController extends Controller
@@ -25,5 +27,11 @@ class SiteController extends Controller
         $brands = Brands::with('products')->get();
         $slider=Product::where('is_slider',1)->get();
         return view('front.site.home',compact('brands','slider'));
+    }
+
+    public function categorypage(SubCategories $category){
+       $brands=$category->brands;
+    //    return $brands;
+       return view('front.site.category',compact('brands'));
     }
 }
