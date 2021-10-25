@@ -67,7 +67,7 @@
                         <div class="block block-product clearfix">
                             <h2 class="title_block">{{$brand->name}}</h2>
                                 <div class="block_content">
-                                    <div id="productlist1693764381" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="true" data-autoplayTimeout="6000" data-loop="true" data-margin="30" data-dots="false" data-nav="true" data-items="3" data-items_large="3" data-items_tablet="3" data-items_mobile="1" >
+                                    <div id="productlist1693764381" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false" data-autoplayTimeout="6000" data-loop="true" data-margin="30" data-dots="false" data-nav="true" data-items="3" data-items_large="3" data-items_tablet="3" data-items_mobile="1" >
 
 
                                             {{-- <div class="item  text-center"> --}}
@@ -76,12 +76,12 @@
                                                     <div class="col-12 col-w40 pl-0">
                                                         <div class="thumbnail-container">
 
-                                                            <a href="http://demo.bestprestashoptheme.com/savemart/ar/home-appliance/4-112-the-adventure-begins-framed-poster.html#/1-الحجم-ص/9-اللون_-ابيض_مطفي" class="thumbnail product-thumbnail two-image">
+                                                            <a href="{{route('product',$product->id)}}" class="thumbnail product-thumbnail two-image">
                                                                 <img
                                                                     class="img-fluid image-cover"
                                                                     src = "{{$product->photo}}"
                                                                     alt = ""
-                                                                    data-full-size-image-url = "http://demo.bestprestashoptheme.com/savemart/39-large_default/the-adventure-begins-framed-poster.jpg"
+                                                                    data-full-size-image-url = "{{route('product',$product->id)}}"
                                                                     width="600"
                                                                     height="600"
                                                                 >
@@ -89,7 +89,7 @@
                                                                     class="img-fluid image-secondary"
                                                                     src = "{{$product->photo}}"
                                                                     alt = ""
-                                                                    data-full-size-image-url = "http://demo.bestprestashoptheme.com/savemart/43-large_default/the-adventure-begins-framed-poster.jpg"
+                                                                    data-full-size-image-url = "{{route('product',$product->id)}}"
                                                                     width="600"
                                                                     height="600"
                                                                 >
@@ -102,7 +102,7 @@
                                                             <div class="product-groups">
                                                                 <!-- begin /var/www/demo.bestprestashoptheme.com/public_html/savemart/themes/vinova_savemart/modules/jmarketplace/views/templates/hook/product-list.tpl -->
                                                                 <p class="seller_name">
-                                                                    <a title="View seller profile" href="http://demo.bestprestashoptheme.com/savemart/ar/jmarketplace/2_taylor-jonson/">
+                                                                    <a title="View seller profile" href="{{route('product',$product->id)}}">
                                                                         <i class="zmdi zmdi-account-circle "></i>
                                                                         {{$brand->vendor->name}}
                                                                     </a>
@@ -111,7 +111,8 @@
                                                                 <!-- end /var/www/demo.bestprestashoptheme.com/public_html/savemart/themes/vinova_savemart/modules/jmarketplace/views/templates/hook/product-list.tpl -->
 
 
-                                                                <div class="product-title" itemprop="name"><a href="http://demo.bestprestashoptheme.com/savemart/ar/home-appliance/4-112-the-adventure-begins-framed-poster.html#/1-الحجم-ص/9-اللون_-ابيض_مطفي">                                            {{$product->name}}
+                                                                <div class="product-title" itemprop="name"><a href="{{route('product',$product->id)}}">
+                                                                     {{$product->name}}
                                                                 </a></div>
 
                                                                 <div class="product-group-price">
@@ -131,23 +132,60 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                                                <form action="http://demo.bestprestashoptheme.com/savemart/ar/عربة التسوق" method="post" class="formAddToCart">
-                                                                    <input type="hidden" name="token" value="28add935523ef131c8432825597b9928">
-                                                                    <input type="hidden" name="id_product" value="4">
+                                                                <form action="{{route('cart.store')}}" method="post" class="formAddToCart">
+                                                                    @csrf
+                                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
                                                                     <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                        <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-lg""></i>
+                                                                        <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-lg"></i>
                                                                         <span>أضف للسلة</span></a>
                                                                 </form>
 
-                                                                <!-- begin /var/www/demo.bestprestashoptheme.com/public_html/savemart/themes/vinova_savemart/modules/novblockwishlist/novblockwishlist_button.tpl -->
 
-                                                                <a class="addToWishlist wishlistProd_4" href="#" data-rel="4" onclick="WishlistCart('wishlist_block_list', 'add', '4', false, 1); return false;">
-                                                                    <i class="zmdi zmdi-favorite zmdi-hc-lg"></i>
-                                                                    <span>Add to Wishlist</span>
-                                                                </a>
+                                                                    @auth
+                                                                    @if(App\Wishlist::where('user_id',Auth::user()->id)->get() -> count() > 0)
+                                                                    <form action="{{route('addproduct',$product->id)}}" method="post" class="formAddToCart">
+                                                                        @csrf
+                                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                                    <select name="wishlist_id" class="select2 form-control" style="position:absolute;top:-30px;display:none">
+                                                                        <optgroup label="من فضلك أختر القائمة ">
+                                                                                @foreach(App\Wishlist::where('user_id',Auth::user()->id)->get() as $wishlist)
+                                                                                    <option
+                                                                                        value="{{$wishlist -> id }}">{{$wishlist -> name}}</option>
+                                                                                @endforeach
+                                                                        </optgroup>
+                                                                    </select>
+                                                                    <button style="border:none" class="addToWishlist wishlistProd_4" type="submit">
+                                                                        <i class="zmdi zmdi-favorite zmdi-hc-lg"></i>
+                                                                        <span>Add to Wishlist</span>
+                                                                        </button>
+                                                                     </form>
+                                                                    @endif
+
+                                                                    @if(App\Wishlist::where('user_id',Auth::user()->id)->get()->count() == 0)
+                                                                    {{-- <div > --}}
+                                                                     <form method="post" action="{{route('addtonew',$product->id)}}">
+                                                                        @csrf
+                                                                        <input type="text" placeholder="Add New List Name" name="name" style="position:absolute;top:-30px;left:50px">
+                                                                        <button style="border:none" class="addToWishlist wishlistProd_4" type="submit">
+                                                                            <i class="zmdi zmdi-favorite zmdi-hc-lg"></i>
+                                                                            <span>Add to Wishlist</span>
+                                                                        </button>
+                                                                     </form>
+                                                                    {{-- </div> --}}
+
+                                                                   @endif
+                                                                    @endauth
+                                                                    @guest
+
+                                                                    <a href="{{route('wishlist.index')}}" style="border:none" class="addToWishlist wishlistProd_4">
+                                                                        <i class="zmdi zmdi-favorite zmdi-hc-lg"></i>
+                                                                        <span>Add to Wishlist</span>
+                                                                    </a>
+                                                                    @endguest
+
                                                                 <!-- end /var/www/demo.bestprestashoptheme.com/public_html/savemart/themes/vinova_savemart/modules/novblockwishlist/novblockwishlist_button.tpl -->
 
-                                                                <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                <a href="{{route('product',$product->id)}}" class="addToWishlist">
                                                                     <i class="zmdi zmdi-search zmdi-hc-lg"></i>
                                                                     <span> نظرة سريعة</span>
                                                                 </a>
@@ -156,10 +194,7 @@
                                                     </div>
                                                 </div>
                                                 @endforeach
-
                                             {{-- </div> --}}
-
-
                                     </div>
                                 </div>
                         </div>
@@ -171,4 +206,25 @@
         </section>
     </div>
 
+
+ @endsection
+
+ @section('script')
+ <script>
+    $('.addToWishlist').mouseover(function () {
+      $('.select2').css("display","block");
+    });
+
+    // $('.addToWishlist').click(function () {
+    //   $('.select2').css("display","none");
+    // });
+
+    // $('.add').mouseover(function () {
+    //   $('.addlist').css("background","red");
+    // });
+
+    // $('#add').click(function () {
+    //   $('#addlist').css("display","none");
+    // });
+    </script>
  @endsection

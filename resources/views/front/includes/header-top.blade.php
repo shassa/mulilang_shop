@@ -1,3 +1,4 @@
+
 <div class="header-top hidden-sm-down">
     <div class="container">
         <div class="content">
@@ -35,6 +36,8 @@
                             </span>
                         @endguest
                     </div>
+                                                {{getdefultlang()}}
+
                    <div id="_desktop_language_selector" class="language-selector groups-selector hidden-sm-down language-selector-dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="main">
                             <span class="expand-more">Languages</span>
@@ -43,16 +46,18 @@
                             <div class="language-list-content text-left">
                                  <?php use App\Models\Language;
                                     $langs=Language::all();?>
-                                 @foreach ($langs as $lang )
+
+                                 @foreach ($langs as $lang)
                                 <div class="language-item">
                                     <div  >
-                                        <a href="{{route('defultLang',$lang)}}">
+                                        <a href="{{route('defultLang',$lang->abbr)}}">
                                             <span>{{$lang->abbr}}</span> :: <span>{{$lang->name}}</span>
                                         </a>
                                     </div>
                                 </div>
                                 @endforeach
                             </div>
+
                         </div>
                     </div>
 

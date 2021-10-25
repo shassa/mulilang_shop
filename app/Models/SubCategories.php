@@ -29,7 +29,11 @@ class SubCategories extends Model
          return $this->belongsTo(MainCategories::class,'category_id','id');
      }
      public function brands(){
-        return $this->hasMany(Brands::class,'subcategory_id');
+        return $this->hasMany(Brands::class,'subcategory_id')->with('products');
     }
+    public function products(){
+        return $this->hasManyThrough(Product::class,Brands::class,'subcategory_id','brand_id');
+    }
+
 
 }

@@ -50,6 +50,9 @@
         </header>
         <br><br>
         <div style="padding-left: 10%">
+            @include('admin.includes.alerts.success')
+            @include('admin.includes.alerts.errors')
+
             @yield('content')
         </div>
         <footer>
@@ -59,6 +62,8 @@
 
         <script type="text/javascript" src="{{asset('js/bottom-3c96ed23.js')}}"></script>
         <div class="betternet-wrapper"></div>
+        @yield('script')
+
     </body>
   <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 </html>

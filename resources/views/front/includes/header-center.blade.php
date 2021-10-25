@@ -19,7 +19,7 @@
                         <a class="login" href="http://demo.bestprestashoptheme.com/savemart/ar/الحساب الشخصي" rel="nofollow" title="تسجيل الدخول إلى حسابك"><i class="zmdi zmdi-account zmdi-hc-2x"></i></a>
                     </div>
                     <div class="header_link_wishlist">
-                        <a href="http://demo.bestprestashoptheme.com/savemart/ar/module/novblockwishlist/mywishlist" title="My Wishlists">
+                        <a href="{{route('wishlist.index')}}" title="My Wishlists">
                             <i class="zmdi zmdi-star zmdi-hc-2x"></i>
                         </a>
                     </div>

@@ -20,12 +20,12 @@
                                                     <div class="col-12 col-w40 pl-0">
                                                         <div class="thumbnail-container">
 
-                                                            <a href="http://demo.bestprestashoptheme.com/savemart/ar/home-appliance/4-112-the-adventure-begins-framed-poster.html#/1-الحجم-ص/9-اللون_-ابيض_مطفي" class="thumbnail product-thumbnail two-image">
+                                                            <a href="{{route('product',$product->id)}}" class="thumbnail product-thumbnail two-image">
                                                                 <img
                                                                     class="img-fluid image-cover"
                                                                     src = "{{$product->photo}}"
                                                                     alt = ""
-                                                                    data-full-size-image-url = "http://demo.bestprestashoptheme.com/savemart/39-large_default/the-adventure-begins-framed-poster.jpg"
+                                                                    data-full-size-image-url = "{{$product->photo}}"
                                                                     width="600"
                                                                     height="600"
                                                                 >
@@ -33,7 +33,7 @@
                                                                     class="img-fluid image-secondary"
                                                                     src = "{{$product->photo}}"
                                                                     alt = ""
-                                                                    data-full-size-image-url = "http://demo.bestprestashoptheme.com/savemart/43-large_default/the-adventure-begins-framed-poster.jpg"
+                                                                    data-full-size-image-url = "{{$product->photo}}"
                                                                     width="600"
                                                                     height="600"
                                                                 >
@@ -55,7 +55,8 @@
                                                                 <!-- end /var/www/demo.bestprestashoptheme.com/public_html/savemart/themes/vinova_savemart/modules/jmarketplace/views/templates/hook/product-list.tpl -->
 
 
-                                                                <div class="product-title" itemprop="name"><a href="http://demo.bestprestashoptheme.com/savemart/ar/home-appliance/4-112-the-adventure-begins-framed-poster.html#/1-الحجم-ص/9-اللون_-ابيض_مطفي">                                            {{$product->name}}
+                                                                <div class="product-title" itemprop="name"><a href="{{route('product',$product->id)}}">
+                                                                           {{$product->name}}
                                                                 </a></div>
 
                                                                 <div class="product-group-price">
