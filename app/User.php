@@ -40,4 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function orders(){
         return $this->hasMany(Orders::class);
     }
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class)->with('products');
+    }
 }

@@ -68,7 +68,7 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <a href="#">
+                                        <a href="{{route('add.to.cart',$product->id)}}">
                                             <i class="zmdi zmdi-shopping-cart zmdi-hc-2x"></i>
                                         </a>
                                     </td>
@@ -91,7 +91,7 @@
                     </div>
                     @endforeach
 
-                    <button class="btn btn-secondary effect-btn">Add All To Cart</button>
+                    <a class="btn btn-secondary effect-btn" href="{{route('add.allto.cart')}}">Add All To Cart</a>
 
                 </div>
             </div>

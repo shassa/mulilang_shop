@@ -11,7 +11,7 @@
                         <div class="block block-product clearfix">
                             <h2 class="title_block">{{$brand->name}}</h2>
                                 <div class="block_content">
-                                    <div id="productlist1693764381" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="true" data-autoplayTimeout="6000" data-loop="true" data-margin="30" data-dots="false" data-nav="true" data-items="3" data-items_large="3" data-items_tablet="3" data-items_mobile="1" >
+                                    <div id="productlist1693764381" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false" data-autoplayTimeout="6000" data-loop="true" data-margin="30" data-dots="false" data-nav="true" data-items="3" data-items_large="3" data-items_tablet="3" data-items_mobile="1" >
 
 
                                             {{-- <div class="item  text-center"> --}}
@@ -76,13 +76,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                                                <form action="http://demo.bestprestashoptheme.com/savemart/ar/عربة التسوق" method="post" class="formAddToCart">
-                                                                    <input type="hidden" name="token" value="28add935523ef131c8432825597b9928">
-                                                                    <input type="hidden" name="id_product" value="4">
-                                                                    <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                        <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-lg""></i>
-                                                                        <span>أضف للسلة</span></a>
-                                                                </form>
+                                                                <a class="add-to-cart addToWishlist" href="{{route('add.to.cart',$product->id)}}">
+                                                                    <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-lg"></i>
+                                                                    <span>أضف للسلة</span></a>
 
                                                                 <!-- begin /var/www/demo.bestprestashoptheme.com/public_html/savemart/themes/vinova_savemart/modules/novblockwishlist/novblockwishlist_button.tpl -->
 

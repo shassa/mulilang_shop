@@ -41,6 +41,9 @@
                        4-accusamus repellendus quidem commodi, <br>
                        5- porro totam aspernatur ad qui dolorem debitis,<br>
                        6- labore veritatis illum corporis nemo nam officiis nobis?</p>
+
+                       <hr>
+                       <a class="btn btn-primary" href="{{route('add.to.cart',$product->id)}}">Add To Shopping Cart</a>
                   </div>
           </div>
         </div>

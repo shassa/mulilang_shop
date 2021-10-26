@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
-    public function cart(){
-        return view('front.site.cart');
-    }
 
     public function wishlist(){
         return view('front.site.wishlist');

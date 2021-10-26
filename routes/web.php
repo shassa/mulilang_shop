@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,10 @@ Route::middleware('lang')->group(function () {
     Route::get('/setlag/{lang}',[SiteController::class,'setlang'])->name('defultLang');
     Route::get('/category/{category}',[SiteController::class,'categorypage'])->name('category');
     Route::get('/product/{product}',[SiteController::class,'productpage'])->name('product');
-    Route::get('/cart',[SiteController::class,'cart'])->name('cart');
+    Route::get('/cart',[CartController::class,'index'])->name('cart');
+    Route::get('add-to-cart/{id}',[CartController::class,'addToCart'])->name('add.to.cart');
+    Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
+    Route::delete('remove-from-cart', [CartController::class,'destroy'])->name('remove.from.cart');
 
     Route::middleware('auth')->group(function () {
       //wishlist
@@ -28,6 +32,7 @@ Route::middleware('lang')->group(function () {
     Route::delete('/wishlist/deleteproduct/{wishlist}',[WishlistController::class,'deleteProduct'])->name('deleteproduct');
     Route::post('/wishlist/addproduct/{product}',[WishlistController::class,'addProduct'])->name('addproduct');
     Route::post('/wishlist/addtonew/{product}',[WishlistController::class,'addwithoutwishlist'])->name('addtonew');
+    Route::get('/add-Allto-cart',[CartController::class,'addAlltoCart'])->name('add.allto.cart');
 
     });
 

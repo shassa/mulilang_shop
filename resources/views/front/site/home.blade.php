@@ -132,13 +132,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product-buttons d-flex justify-content-center" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                                                <form action="{{route('cart.store')}}" method="post" class="formAddToCart">
-                                                                    @csrf
-                                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                                    <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+
+                                                                    <a class="add-to-cart addToWishlist" href="{{route('add.to.cart',$product->id)}}">
                                                                         <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-lg"></i>
                                                                         <span>أضف للسلة</span></a>
-                                                                </form>
 
 
                                                                     @auth

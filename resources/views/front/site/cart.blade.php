@@ -29,106 +29,49 @@
                                     <th>Product Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th>SubTotal</th>
                                     <th>Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                 @php $total = 0 @endphp
+                                 @if(session('cart'))
+                                 @foreach(session('cart') as $id => $details)
+                                @php $total += $details['price'] * $details['quantity'] @endphp
+                                <tr data-id={{ $id }}>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
-								</a>
+                                       <img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive"/>
+                                    	</a>
                                     </td>
                                     <td class="name-pr">
                                         <a href="#">
-									Lorem ipsum dolor sit amet
+									{{ $details['name'] }}
 								</a>
                                     </td>
                                     <td class="price-pr">
-                                        <p>$ 80.0</p>
+                                        <p>${{ $details['price'] }}</p>
                                     </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                                    <td class="quantity-box">
+                                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+
+                                    </td>
                                     <td class="total-pr">
-                                        <p>$ 80.0</p>
+                                        <p> ${{  $details['quantity'] * $details['price']}}</p>
                                     </td>
                                     <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
+                                        <button class="btn btn-danger btn-sm remove-from-cart">                                            <i class="zmdi zmdi-delete zmdi-hc-lg"></i>
+                                        </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 60.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 30.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
+                                @endforeach
+                                 @endif
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div class="row my-5">
-                <div class="col-lg-6 col-sm-6">
-                    <div class="coupon-box">
-                        <div class="input-group input-group-sm">
-                            <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">
-                            <div class="input-group-append">
-                                <button class="btn btn-theme" type="button">Apply Coupon</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-6">
-                    <div class="update-box">
-                        <input value="Update Cart" type="submit">
-                    </div>
-                </div>
-            </div>
 
             <div class="row my-5">
                 <div class="col-lg-8 col-sm-12"></div>
@@ -136,17 +79,8 @@
                     <div class="order-box">
                         <h3>Order summary</h3>
                         <div class="d-flex">
-                            <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> $ 130 </div>
-                        </div>
-                        <div class="d-flex">
-                            <h4>Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 40 </div>
-                        </div>
-                        <hr class="my-1">
-                        <div class="d-flex">
-                            <h4>Coupon Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 10 </div>
+                            <h4> Total price </h4>
+                            <div class="ml-auto font-weight-bold"> $ {{$total}} </div>
                         </div>
                         <div class="d-flex">
                             <h4>Tax</h4>
@@ -159,7 +93,7 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> $ 388 </div>
+                            <div class="ml-auto h5"> ${{$total +2}} </div>
                         </div>
                         <hr> </div>
                 </div>
@@ -169,4 +103,50 @@
         </div>
     </div>
     <!-- End Cart -->
-    @endsection
+@endsection
+
+
+@section('script')
+<script type="text/javascript">
+
+    $(".update-cart").change(function (e) {
+        e.preventDefault();
+
+        var ele = $(this);
+
+        $.ajax({
+            url: '{{ route('update.cart') }}',
+            method: "patch",
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: ele.parents("tr").attr("data-id"),
+                quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function (response) {
+               window.location.reload();
+            }
+        });
+    });
+
+    $(".remove-from-cart").click(function (e) {
+        e.preventDefault();
+
+        var ele = $(this);
+
+        if(confirm("Are you sure want to remove?")) {
+            $.ajax({
+                url: '{{ route('remove.from.cart') }}',
+                method: "DELETE",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents("tr").attr("data-id")
+                },
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
+</script>
+@endsection
