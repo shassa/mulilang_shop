@@ -93,11 +93,15 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> ${{$total +2}} </div>
+                            <div class="ml-auto h5">$ {{$total +2}} </div>
                         </div>
                         <hr> </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto btn hvr-hover">Checkout</a> </div>
+                <div class="col-12 d-flex shopping-box">
+                    <div id="paypal-button-container"></div>
+
+                    {{-- <button class="btn btn-primary" id="btn" type="submit">check out </button> --}}
+                </div>
             </div>
 
         </div>
@@ -148,5 +152,45 @@
         }
     });
 
+</script>
+
+
+<script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.sandbox.client_id')}}&currency=USD"></script>
+
+<script>
+ paypal.Buttons({
+    createOrder: function(data, actions) {
+
+    return fetch('/mulilang_shop/public/api/paypal/create', {
+                    method: 'POST',
+                    body:JSON.stringify({
+                        'amount' :0.09,
+                    })
+                }).then(function(res) {
+                    //res.json();
+                    return res.json();
+                }).then(function(orderData) {
+                    //console.log(orderData);
+                    return orderData.id;
+                });
+            },
+
+    onApprove: function(data, actions) {
+    // This function captures the funds from the transaction.
+    return fetch('/mulilang_shop/public/api/paypal/capture' , {
+                    method: 'POST',
+                    body :JSON.stringify({
+                        orderId : data.orderID,
+                    })
+                }).then(function(res) {
+                   // console.log(res.json());
+                    return res.json();
+                }).then(function(orderData) {
+
+                alert(orderData.id);
+                });
+            }
+
+}).render('#paypal-button-container');
 </script>
 @endsection

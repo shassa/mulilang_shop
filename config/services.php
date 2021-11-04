@@ -34,5 +34,9 @@ return [
         'client_secret' => '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',
         'redirect' => 'http://localhost:8000/auth/google/callback',
     ],
-
+    'paypal' => [
+        'client_id' => 'AUKA2v4t2BvbxVHRr5Ls9nKqDn8a0l3LaMeIAqdW407gFbQUXDKDbiU-MB8X3DqbE6uGHyPzRSFF8G6I',
+        'client_secret' => 'EBg5CR327dx_9SttuERIjjlsyfYEHUoPJ91LToB6NkuNWHqNyOMdnGHZu4LG5vAwFE6TZPcWq2LGQCSG',
+        'redirect' => 'https://localhost/mulilang_shop/public/',
+    ],
 ];

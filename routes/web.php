@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ Route::middleware('lang')->group(function () {
     Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [CartController::class,'destroy'])->name('remove.from.cart');
 
-    Route::middleware('auth')->group(function () {
+     Route::middleware('auth')->group(function () {
       //wishlist
     Route::resource('/wishlist','WishlistController');
     Route::delete('/wishlist/deleteproduct/{wishlist}',[WishlistController::class,'deleteProduct'])->name('deleteproduct');
@@ -34,7 +35,7 @@ Route::middleware('lang')->group(function () {
     Route::post('/wishlist/addtonew/{product}',[WishlistController::class,'addwithoutwishlist'])->name('addtonew');
     Route::get('/add-Allto-cart',[CartController::class,'addAlltoCart'])->name('add.allto.cart');
 
-    });
+     });
 
     Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 });

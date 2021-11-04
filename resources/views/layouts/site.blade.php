@@ -7,6 +7,8 @@
         <title>Prestashop_Savemart</title>
         <meta name="description" content="Shop powered by PrestaShop">
         <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
         {{-- css links --}}
             <link rel="icon" type="image/vnd.microsoft.icon" href="http://demo.bestprestashoptheme.com/savemart/img/favicon.ico?1531456858">

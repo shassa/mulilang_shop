@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddProduct;
 use App\Http\Requests\ProductRequest;
 use App\Models\Brands;
 use App\Models\Product;
@@ -90,6 +91,7 @@ class ProductController extends Controller
                }
 
             }
+            event(new AddProduct(Product::where('id',$defultbrandid)->first())); // dispatch event from here
             DB::commit();
             return redirect()->route('products.index')->with(['success'=>'تم حفظ المنتج بنجاح']);
          }catch(Exception $ex){
